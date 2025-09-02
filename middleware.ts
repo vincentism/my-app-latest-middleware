@@ -9,10 +9,10 @@ export async function middleware(nextRequest: NextRequest) {
   const request = new MiddlewareRequest(nextRequest);
 
 
-  if (!request.geo?.city) {
-    // 如果无法获取地理信息，直接返回下一个响应
-    return request.next();
-  }
+  // if (!request.geo?.city) {
+  //   // 如果无法获取地理信息，直接返回下一个响应
+  //   return request.next();
+  // }
 
   
 
@@ -24,10 +24,12 @@ export async function middleware(nextRequest: NextRequest) {
   // 通过响应头传递地理信息，而不是 setPageProp
   if (request.geo?.city) {
     response.headers.set('x-geo-city', request.geo.city);
+  } else {
+    response.headers.set('x-geo-city', 'no-city');
   }
 
 
-  response.headers.set('x-geo-city', 'no-city');
+  
 
 
   return response;
