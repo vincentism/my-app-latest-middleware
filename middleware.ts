@@ -27,6 +27,9 @@ export async function middleware(nextRequest: NextRequest) {
   }
 
 
+  response.headers.set('x-geo-city', 'no-city');
+
+
   return response;
   // ...
 }
