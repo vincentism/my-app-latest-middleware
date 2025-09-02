@@ -6,6 +6,7 @@ import { MiddlewareRequest, type NextRequest } from '@netlify/next';
 
 
 export async function middleware(nextRequest: NextRequest) {
+  console.log('in middleware');
   const request = new MiddlewareRequest(nextRequest);
 
 
