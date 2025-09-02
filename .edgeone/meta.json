@@ -1,0 +1,72 @@
+{
+  "conf": {
+    "headers": [],
+    "redirects": [],
+    "rewrites": [],
+    "caches": [],
+    "has404": true
+  },
+  "has404": true,
+  "nextRoutes": [
+    {
+      "path": "/ssg1",
+      "isStatic": true,
+      "srcRoute": "/ssg1",
+      "dataRoute": "/ssg1.rsc"
+    },
+    {
+      "path": "/ssg1/1",
+      "isStatic": true,
+      "srcRoute": "/ssg1/[id]",
+      "dataRoute": "/ssg1/1.rsc"
+    },
+    {
+      "path": "/ssg1/2",
+      "isStatic": true,
+      "srcRoute": "/ssg1/[id]",
+      "dataRoute": "/ssg1/2.rsc"
+    },
+    {
+      "path": "/ssg1/3",
+      "isStatic": true,
+      "srcRoute": "/ssg1/[id]",
+      "dataRoute": "/ssg1/3.rsc"
+    },
+    {
+      "path": "/ssg1/4",
+      "isStatic": true,
+      "srcRoute": "/ssg1/[id]",
+      "dataRoute": "/ssg1/4.rsc"
+    },
+    {
+      "path": "/favicon.ico",
+      "isStatic": true,
+      "srcRoute": "/favicon.ico"
+    },
+    {
+      "path": "/",
+      "isStatic": true,
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc"
+    },
+    {
+      "path": "/_app"
+    },
+    {
+      "path": "/_error"
+    },
+    {
+      "path": "/_document"
+    },
+    {
+      "path": "/404",
+      "isStatic": true
+    },
+    {
+      "path": "/_not-found"
+    },
+    {
+      "path": "/ssg1/:id"
+    }
+  ]
+}
