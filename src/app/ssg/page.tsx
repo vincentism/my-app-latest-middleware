@@ -1,5 +1,11 @@
-export const dynamic = "force-dynamic"
-
+// export const dynamic = "force-dynamic"
+import Link from "next/link";
 export default function Page() {
-  return <div>Hello Next.js!</div>
+  return (
+    <div>
+      <Link href="/aliplayer">Go to Aliplayer</Link>
+      <div>Hello Next.js!</div>
+    </div>
+  )
+  
 }

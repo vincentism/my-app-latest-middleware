@@ -1,0 +1,23 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export default function onRequest(context) {
+
+  console.log('in middleware - pathname:', context);
+  
+  // 创建响应
+  const response = NextResponse.next();
+  
+  // 添加自定义响应头
+  response.headers.set('x-middleware-executed', 'true');
+  response.headers.set('x-request-time', new Date().toISOString());
+  
+  return response;
+}
+
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
+}
