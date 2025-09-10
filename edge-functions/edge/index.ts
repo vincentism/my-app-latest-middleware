@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export default function onRequest(context) {
 
-  console.log('in middleware - pathname:', context);
+  console.log('in middleware - context:', context);
   
   // 创建响应
   const response = NextResponse.next();
