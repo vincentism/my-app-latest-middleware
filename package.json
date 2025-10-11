@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@netlify/next": "^1.4.9",
+    "edgeone": "^1.1.4",
     "next": "15.4.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"

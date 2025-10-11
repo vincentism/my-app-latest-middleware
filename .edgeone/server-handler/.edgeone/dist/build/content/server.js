@@ -83,7 +83,7 @@ var copyNextServerCode = async (ctx) => {
   const nextFolder = toPosixPath(ctx.distDir) === toPosixPath(ctx.buildConfig.distDir) ? ctx.distDir : ctx.nextDistDir;
   const destDir = join(ctx.serverHandlerDir, nextFolder);
   const paths = await (0, import_fast_glob.default)(
-    [`*`, `server/*`, `server/chunks/*`, `server/edge-chunks/*`, `server/+(app|pages)/**/*`],
+    [`*`, `server/*`, `server/**/*`, `server/edge-chunks/*`, `server/+(app|pages)/**/*.js`],
     {
       cwd: srcDir,
       extglob: true

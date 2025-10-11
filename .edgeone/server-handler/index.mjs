@@ -8,7 +8,7 @@ import serverHandler from './.edgeone/dist/run/handlers/server.js';
 import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
 
 
-  async function handleResponse(res, response) {
+  async function handleResponse(res, response, passHeaders = {}) {
     const startTime = Date.now();
     
     if (!response) {
@@ -18,19 +18,18 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
         message: "The requested path does not exist"
       }));
       const endTime = Date.now();
-      console.log(`handleResponse: 404 Not Found - ${endTime - startTime}ms`);
+      console.log(`HandleResponse: 404 Not Found - ${endTime - startTime}ms`);
       return;
     }
 
     try {
       if (response instanceof Response) {
         const headers = Object.fromEntries(response.headers);
-
+        Object.assign(headers, passHeaders);
         if (response.headers.get('eop-client-geo')) {
           // 删除 eop-client-geo 头部
           response.headers.delete('eop-client-geo');
         }
-        
         
         // 检查是否是流式响应
         const isStream = response.body && (
@@ -88,7 +87,7 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
         res.end(JSON.stringify(response));
       }
     } catch (error) {
-      console.error('handleResponse error', error);
+      console.error('HandleResponse error', error);
       // 错误处理
       res.writeHead(500);
       res.end(JSON.stringify({
@@ -97,7 +96,7 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
       }));
     } finally {
       const endTime = Date.now();
-      console.log(`handleResponse: ${response?.status || 'unknown'} - ${endTime - startTime}ms`);
+      console.log(`HandleResponse: ${response?.status || 'unknown'} - ${endTime - startTime}ms`);
     }
   }
   
@@ -186,8 +185,12 @@ const server = createServer(async (req, res) => {
     response.headers.set('functions-request-id', req.headers['x-scf-request-id'] || '');
 
     const requestEndTime = Date.now();
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    console.log(`Request path: ${url.pathname}`);
     console.log(`Request processing time: ${requestEndTime - requestStartTime}ms`);
-    await handleResponse(res, response);
+    await handleResponse(res, response, {
+      'functions-request-id': req.headers['x-scf-request-id'] || ''
+    });
     return;
   } catch (error) {
     console.error('SSR Error:', error);
@@ -198,6 +201,6 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log('Example app listening at http://localhost:9000');
+  console.log('Server is running on http://localhost:9000');
 });
   

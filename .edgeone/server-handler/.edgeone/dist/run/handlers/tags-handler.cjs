@@ -27,8 +27,8 @@ __export(tags_handler_exports, {
 module.exports = __toCommonJS(tags_handler_exports);
 
 // package.json
-var name = "@tencent/opennext";
-var version = "1.0.17";
+var name = "@edgeone/opennextjs-pages";
+var version = "0.0.1";
 
 // src/run/handlers/tags-handler.cts
 var import_request_context = require("./request-context.cjs");
@@ -39,12 +39,31 @@ function isAnyTagStale(tags, timestamp) {
 function getCacheTagsFromTagOrTags(tagOrTags) {
   return (Array.isArray(tagOrTags) ? tagOrTags : [tagOrTags]).flatMap((tag) => tag.split(/,|%2c/gi)).filter(Boolean);
 }
-function purgeEdgeCache(tagOrTags) {
-  const tags = getCacheTagsFromTagOrTags(tagOrTags);
+async function purgeEdgeCache(tagOrTags) {
+  const tags = getCacheTagsFromTagOrTags(tagOrTags).map((tag) => {
+    return tag.replace(/^_N_T_/, "").replace(/\/page|\/layout$/, "");
+  });
   if (tags.length === 0) {
     return Promise.resolve();
   }
   (0, import_request_context.getLogger)().debug(`[NextRuntime] Purging CDN cache for: [${tags}.join(', ')]`);
+  const baseUrl = process.env.IS_MAINLAND === "true" ? "https://pages-api.cloud.tencent.com" : "https://pages-api.edgeone.ai";
+  const token = process.env.PURGE_TOKEN;
+  const requestBody = {
+    path: [...tags]
+  };
+  const res = await fetch(`${baseUrl}/eo/purge`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(requestBody)
+  });
+  const data = await res.json();
+  if (data?.error) {
+    console.log(`Failed to purge CDN cache: ${data?.error.message}`);
+  }
 }
 async function doRevalidateTagAndPurgeEdgeCache(tags) {
   (0, import_request_context.getLogger)().withFields({ tags }).debug("doRevalidateTagAndPurgeEdgeCache");

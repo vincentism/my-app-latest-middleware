@@ -18,16 +18,7 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [
-    {
-      "page": "/ssg1/[id]",
-      "regex": "^/ssg1/([^/]+?)(?:/)?$",
-      "routeKeys": {
-        "nxtPid": "nxtPid"
-      },
-      "namedRegex": "^/ssg1/(?<nxtPid>[^/]+?)(?:/)?$"
-    }
-  ],
+  "dynamicRoutes": [],
   "staticRoutes": [
     {
       "page": "/",
@@ -42,16 +33,28 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/aliplayer",
+      "regex": "^/aliplayer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/aliplayer(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
     },
     {
-      "page": "/ssg1",
-      "regex": "^/ssg1(?:/)?$",
+      "page": "/ssg",
+      "regex": "^/ssg(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/ssg1(?:/)?$"
+      "namedRegex": "^/ssg(?:/)?$"
+    },
+    {
+      "page": "/test",
+      "regex": "^/test(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/test(?:/)?$"
     }
   ],
   "dataRoutes": [],

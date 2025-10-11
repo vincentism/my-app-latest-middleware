@@ -33,6 +33,7 @@ var PluginContext = class {
   packageJSON;
   /** Absolute path of the next runtime plugin directory */
   pluginDir = PLUGIN_DIR;
+  serverlessWrapHandler;
   get relPublishDir() {
     return this.constants.PUBLISH_DIR ?? join(this.constants.PACKAGE_PATH || "", DEFAULT_PUBLISH_DIR);
   }
@@ -57,7 +58,7 @@ var PluginContext = class {
    * The working directory inside the lambda that is used for monorepos to execute the serverless function
    */
   get lambdaWorkingDirectory() {
-    return join("/var/task", this.distDirParent);
+    return join("./", this.distDirParent);
   }
   /**
    * Retrieves the root of the `.next/standalone` directory
@@ -273,6 +274,21 @@ var PluginContext = class {
    */
   async getRoutesManifest() {
     return JSON.parse(await readFile(join(this.publishDir, "routes-manifest.json"), "utf-8"));
+  }
+  /**
+   * Get Next.js images manifest from the build output
+   * This handles the image optimization routes for Next.js Image component
+   */
+  async getImagesManifest() {
+    const imagesManifestPath = join(this.publishDir, "images-manifest.json");
+    try {
+      if (!existsSync(imagesManifestPath)) {
+        return {};
+      }
+      return JSON.parse(await readFile(imagesManifestPath, "utf-8"));
+    } catch (error) {
+      return {};
+    }
   }
   #nextVersion = void 0;
   /**

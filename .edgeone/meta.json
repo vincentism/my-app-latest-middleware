@@ -1,47 +1,80 @@
 {
+  "nodeFunctionsRoutes": [
+    {
+      "routePath": "/error1",
+      "mountPath": "error1",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "error1/index.js:onRequest"
+      ]
+    },
+    {
+      "routePath": "/error2",
+      "mountPath": "error2",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "error2/index.js:onRequest"
+      ]
+    },
+    {
+      "routePath": "/normal",
+      "mountPath": "normal",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "normal/index.js:onRequest"
+      ]
+    }
+  ],
   "conf": {
     "headers": [],
     "redirects": [],
     "rewrites": [],
     "caches": [],
+    "outputDirectory": ".edgeone",
     "has404": true
   },
   "has404": true,
   "nextRoutes": [
     {
-      "path": "/ssg1",
+      "path": "/test",
       "isStatic": true,
-      "srcRoute": "/ssg1",
-      "dataRoute": "/ssg1.rsc"
-    },
-    {
-      "path": "/ssg1/1",
-      "isStatic": true,
-      "srcRoute": "/ssg1/[id]",
-      "dataRoute": "/ssg1/1.rsc"
-    },
-    {
-      "path": "/ssg1/2",
-      "isStatic": true,
-      "srcRoute": "/ssg1/[id]",
-      "dataRoute": "/ssg1/2.rsc"
-    },
-    {
-      "path": "/ssg1/3",
-      "isStatic": true,
-      "srcRoute": "/ssg1/[id]",
-      "dataRoute": "/ssg1/3.rsc"
-    },
-    {
-      "path": "/ssg1/4",
-      "isStatic": true,
-      "srcRoute": "/ssg1/[id]",
-      "dataRoute": "/ssg1/4.rsc"
+      "srcRoute": "/test",
+      "dataRoute": "/test.rsc"
     },
     {
       "path": "/favicon.ico",
       "isStatic": true,
       "srcRoute": "/favicon.ico"
+    },
+    {
+      "path": "/ssg",
+      "isStatic": true,
+      "srcRoute": "/ssg",
+      "dataRoute": "/ssg.rsc"
     },
     {
       "path": "/",
@@ -63,10 +96,16 @@
       "isStatic": true
     },
     {
+      "path": "/api/test"
+    },
+    {
       "path": "/_not-found"
     },
     {
-      "path": "/ssg1/:id"
+      "path": "/aliplayer"
+    },
+    {
+      "path": "/_next/image"
     }
   ]
 }

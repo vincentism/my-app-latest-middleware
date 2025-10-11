@@ -16,7 +16,7 @@ import {
 } from "../../esm-chunks/chunk-6BT4RYQJ.js";
 
 // src/build/functions/server.ts
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { join as posixJoin } from "node:path/posix";
 var import_fast_glob = __toESM(require_out(), 1);
@@ -88,6 +88,33 @@ var writeHandlerManifest = async (ctx) => {
     "utf-8"
   );
 };
+var applyTemplateVariables = (template, variables) => {
+  return Object.entries(variables).reduce((acc, [key, value]) => {
+    return acc.replaceAll(key, value);
+  }, template);
+};
+var getHandlerFile = async (ctx) => {
+  const templatesDir = join(ctx.pluginDir, "dist/build/templates");
+  const templateVariables = {
+    "{{useRegionalBlobs}}": ctx.useRegionalBlobs.toString()
+  };
+  if (ctx.relativeAppDir.length !== 0) {
+    const template = await readFile(join(templatesDir, "handler-monorepo.tmpl.js"), "utf-8");
+    console.log("ctx.lambdaWorkingDirectory", ctx.lambdaWorkingDirectory);
+    console.log("ctx.nextServerHandler", ctx.nextServerHandler);
+    templateVariables["{{cwd}}"] = posixJoin(ctx.lambdaWorkingDirectory);
+    templateVariables["{{nextServerHandler}}"] = posixJoin(ctx.nextServerHandler);
+    return applyTemplateVariables(template, templateVariables);
+  }
+  return applyTemplateVariables(
+    await readFile(join(templatesDir, "handler.tmpl.js"), "utf-8"),
+    templateVariables
+  );
+};
+var writeHandlerFile = async (ctx) => {
+  const handler = await getHandlerFile(ctx);
+  await writeFile(join(ctx.serverHandlerRootDir, `index.mjs`), handler);
+};
 var clearStaleServerHandlers = async (ctx) => {
   await rm(ctx.serverFunctionsDir, { recursive: true, force: true });
 };
@@ -97,11 +124,8 @@ var createServerHandler = async (ctx) => {
   await copyNextDependencies(ctx);
   await copyHandlerDependencies(ctx);
   await writeHandlerManifest(ctx);
+  await writeHandlerFile(ctx);
   await verifyHandlerDirStructure(ctx);
-  if (ctx.serverlessWrapHandler) {
-    const entryCodeTemplate = await ctx.serverlessWrapHandler();
-    await writeFile(join(ctx.serverHandlerRootDir, `index.mjs`), entryCodeTemplate);
-  }
 };
 export {
   clearStaleServerHandlers,

@@ -1,7 +1,9 @@
 {
+  "/api/test/route": "/api/test",
   "/favicon.ico/route": "/favicon.ico",
   "/_not-found/page": "/_not-found",
   "/page": "/",
-  "/ssg1/page": "/ssg1",
-  "/ssg1/[id]/page": "/ssg1/[id]"
+  "/aliplayer/page": "/aliplayer",
+  "/test/page": "/test",
+  "/ssg/page": "/ssg"
 }

@@ -17,6 +17,7 @@
         "npm:@types/node@^20",
         "npm:@types/react-dom@^19",
         "npm:@types/react@^19",
+        "npm:edgeone@^1.1.4",
         "npm:eslint-config-next@15.4.3",
         "npm:eslint@^9",
         "npm:next@15.4.3",

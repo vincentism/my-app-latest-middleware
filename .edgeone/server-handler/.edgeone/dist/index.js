@@ -8,6 +8,7 @@ import "./esm-chunks/chunk-6BT4RYQJ.js";
 
 // src/index.ts
 import { rm } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { copyPrerenderedContent } from "./build/content/prerendered.js";
 import {
   copyStaticAssets,
@@ -23,6 +24,9 @@ var onPreBuild = async (options) => {
 var onBuild = async (options) => {
   const ctx = new PluginContext(options);
   await rm(ctx.staticDir, { recursive: true, force: true });
+  if (existsSync(ctx.serverHandlerDir)) {
+    await rm(ctx.serverHandlerDir, { recursive: true, force: true });
+  }
   if (ctx.buildConfig.output === "export") {
     return Promise.all([copyStaticExport(ctx)]);
   }

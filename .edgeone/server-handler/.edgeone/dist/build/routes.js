@@ -73,6 +73,13 @@ var createRouteMeta = async (ctx) => {
       };
     }
   }
+  const imagesManifest = await ctx.getImagesManifest();
+  if (imagesManifest) {
+    if (imagesManifest.images) {
+      const imageConfig = imagesManifest.images;
+      routeMap[imageConfig.path] = {};
+    }
+  }
   const convertedRouteMap = {};
   const pathsToDelete = [];
   for (const [routePath, routeConfig] of Object.entries(routeMap)) {
