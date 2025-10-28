@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Running Vercel",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"],
+      "timeout": 30000,
+      "sourceMaps": true,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": null
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Vercel Build (npx)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--node-options=--inspect-brk", "vercel"],
+      "args": ["build"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "outputCapture": "std"
+    }
+  ]
+}
+

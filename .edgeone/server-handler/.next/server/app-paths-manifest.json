@@ -1,7 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/test/route": "app/api/test/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
   "/aliplayer/page": "app/aliplayer/page.js",
   "/test/page": "app/test/page.js",

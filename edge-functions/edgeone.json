@@ -1,0 +1,55 @@
+{
+  "functions": [
+    {
+      "name": "subscription-status",
+      "entry": "api/subscription/status.js",
+      "path": "/api/subscription/status",
+      "method": "GET"
+    },
+    {
+      "name": "proxy-nodes",
+      "entry": "api/proxy/nodes.js",
+      "path": "/api/proxy/nodes",
+      "method": "GET"
+    },
+    {
+      "name": "proxy-auth",
+      "entry": "api/proxy/auth.js",
+      "path": "/api/proxy/auth",
+      "method": "GET"
+    },
+    {
+      "name": "payment-create-checkout",
+      "entry": "api/payment/create-checkout.js",
+      "path": "/api/payment/create-checkout",
+      "method": "POST"
+    },
+    {
+      "name": "payment-webhook",
+      "entry": "api/payment/webhook.js",
+      "path": "/api/payment/webhook",
+      "method": "POST"
+    }
+  ],
+  "headers": {
+    "/*": {
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.stripe.com; frame-src https://js.stripe.com https://hooks.stripe.com;"
+    },
+    "/api/*": {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+      "Access-Control-Max-Age": "86400"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    }
+  ]
+}

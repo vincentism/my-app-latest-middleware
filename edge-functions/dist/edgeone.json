@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "include": [
+      "functions/**/*.js"
+    ],
+    "exclude": [
+      "functions/deploy.js"
+    ]
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/functions/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/functions/$1"
+    }
+  ]
+}
