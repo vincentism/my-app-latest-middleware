@@ -28,7 +28,7 @@ module.exports = __toCommonJS(tags_handler_exports);
 
 // package.json
 var name = "@edgeone/opennextjs-pages";
-var version = "0.0.1";
+var version = "0.0.4";
 
 // src/run/handlers/tags-handler.cts
 var import_request_context = require("./request-context.cjs");

@@ -24,6 +24,92 @@
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"],
       "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug EdgeOne Pages Dev",
+      "program": "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/edgeone-dist/cli.js",
+      "args": ["pages", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "!**/node_modules/**",
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/**"
+      ],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug EdgeOne Pages Dev (Pause on Start)",
+      "program": "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/edgeone-dist/cli.js",
+      "args": ["pages", "build"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "stopOnEntry": true,
+      "resolveSourceMapLocations": [
+        "!**/node_modules/**",
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/**"
+      ],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug EdgeOne Source Code (TypeScript)",
+      "runtimeArgs": [
+        "-r",
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/node_modules/esbuild-register/dist/node.js"
+      ],
+      "program": "${workspaceFolder}/.vscode/debug-entry.ts",
+      "args": ["pages", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/**",
+        "!**/node_modules/**"
+      ],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/node_modules"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug EdgeOne Source Code (ts-node)",
+      "runtimeArgs": [
+        "-r",
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/node_modules/ts-node/register"
+      ],
+      "program": "${workspaceFolder}/.vscode/debug-entry.ts",
+      "args": ["pages", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "/Users/vincentlli/Documents/demo/ali-cli/ef-dev-tools/packages/tef-cli/**",
+        "!**/node_modules/**"
+      ],
+      "outputCapture": "std",
+      "env": {
+        "NODE_ENV": "development"
+      }
     }
   ]
 }

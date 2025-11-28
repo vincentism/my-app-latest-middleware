@@ -1,4 +1,147 @@
 
+// ===== Fetch Proxy Injection (Production Mode Only) =====
+// Inject fetch-proxy to intercept fetch calls
+import crypto from 'node:crypto';
+
+(function() {
+  const __originalFetch = globalThis.fetch;
+
+const uuid = '{{PAGES_PROXY_UUID}}';
+const proxyHost = '{{PAGES_PROXY_HOST}}';
+
+function _fetch(
+  request,
+  requestInit = {},
+) {
+  const { host } = getUrl(request);
+  const cache = getHostCache(host);
+  // if (cache && cache.needProxy && cache.expires > Date.now()) {
+    setHostCache(host);
+    return fetchByProxy(request, requestInit);
+  // }
+  // return fetchByOrigin(request, requestInit);
+}
+
+function getUrl(request) {
+  const req = new Request(request);
+  const url = new URL(req.url);
+  return url;
+}
+
+function getHostCache(host) {
+  return new Map(globalThis._FETCHCACHES || []).get(host);
+}
+
+function setHostCache(host) {
+  const value = {
+    needProxy: true,
+    expires: Date.now() + 1000 * 60 * 60,
+  };
+  if (globalThis._FETCHCACHES) {
+    globalThis._FETCHCACHES.set(host, value);
+  } else {
+    const cache = new Map([[host, value]]);
+    Object.defineProperty(globalThis, '_FETCHCACHES', {
+      value: cache,
+      writable: false,
+      enumerable: false,
+      configurable: false,
+    });
+  }
+}
+
+function bufferToHex(arr) {
+  return Array.prototype.map
+    .call(arr, (x) => (x >= 16 ? x.toString(16) : '0' + x.toString(16)))
+    .join('');
+}
+
+function generateSign({ pathname, oeTimestamp }) {
+  return md5(oeTimestamp+'-'+pathname+'-'+uuid);
+}
+
+async function generateHeaders(request) {
+  const { host, pathname } = getUrl(request);
+  const timestamp = Date.now().toString();
+  const sign = generateSign({ pathname, oeTimestamp: timestamp });
+  return {
+    host,
+    timestamp,
+    sign,
+  };
+}
+
+// MD5 hash function for Node.js environment
+// Node.js crypto.subtle.digest doesn't support MD5, so we use crypto.createHash instead
+// Note: crypto is imported at the top level using ESM import
+function md5(text) {
+  const hash = crypto.createHash('md5');
+  hash.update(text, 'utf8');
+  return hash.digest('hex');
+}
+
+/**
+ * 尝试通过原生fetch请求，如果失败，则通过代理请求
+ * @returns
+ */
+async function fetchByOrigin(
+  request,
+  requestInit = {},
+) {
+  try {
+    const res = await __originalFetch(request, {
+      eo: {
+        timeoutSetting: {
+          connectTimeout: 500,
+        },
+      },
+      ...requestInit,
+    });
+    if (res.status > 300 || res.status < 200) throw new Error('need proxy');
+    return res;
+  } catch (error) {
+    const { host } = getUrl(request);
+    setHostCache(host);
+    return fetchByProxy(request, requestInit);
+  }
+}
+
+/**
+ * 通过 AI 代理请求
+ * @returns
+ */
+async function fetchByProxy(
+  request,
+  requestInit,
+) {
+  const options = {};
+  if (requestInit) {
+    Object.assign(options, requestInit || {});
+  }
+  options.headers = new Headers(options.headers || {});
+  const { host, timestamp, sign } = await generateHeaders(request);
+  options.headers.append('oe-host', host);
+  options.headers.append('oe-timestamp', timestamp);
+  options.headers.append('oe-sign', sign);
+  const originReq = new Request(request);
+  const req = new Request(originReq.url.replace(host, proxyHost), {
+    method: originReq.method,
+    headers: originReq.headers,
+    body: originReq.body,
+  });
+  return __originalFetch(req, options);
+}
+// Replace global fetch with _fetch from fetch-proxy
+  if (typeof _fetch === 'function') {
+    globalThis.fetch = _fetch;
+    // Store original fetch for internal use
+    globalThis.__originalFetch = __originalFetch;
+  } else {
+    console.warn('[runtime-shim] _fetch function not found, using original fetch');
+  }
+})();
+
+
 import { createServer } from 'http';
 import {
   createRequestContext,
@@ -11,24 +154,52 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
   async function handleResponse(res, response, passHeaders = {}) {
     const startTime = Date.now();
     
+    // 没有响应 - 404 拦截
     if (!response) {
-      res.writeHead(404);
+      const requestId = passHeaders['functions-request-id'] || '';
+      res.writeHead(404, {
+        'Functions-Request-Id': requestId,
+        'eo-pages-inner-scf-status': '404',
+        'eo-pages-inner-status-intercept': 'true'
+      });
       res.end(JSON.stringify({
         error: "Not Found",
         message: "The requested path does not exist"
       }));
       const endTime = Date.now();
-      console.log(`HandleResponse: 404 Not Found - ${endTime - startTime}ms`);
+      console.log(`Pages response status: 404`);
       return;
     }
 
     try {
       if (response instanceof Response) {
+        const requestId = passHeaders['functions-request-id'] || '';
+        const responseStatus = response.status;
+        
         const headers = Object.fromEntries(response.headers);
         Object.assign(headers, passHeaders);
+        
+        // 添加状态码区分的 headers
+        headers['Functions-Request-Id'] = requestId;
+        
+        // 如果 Response 中已经设置了，使用它的值；否则使用 responseStatus
+        if (!headers['eo-pages-inner-scf-status']) {
+          headers['eo-pages-inner-scf-status'] = String(responseStatus);
+        }
+        
+        // 如果 Response 中已经设置了，使用它的值；否则默认为 false
+        if (!headers['eo-pages-inner-status-intercept']) {
+          headers['eo-pages-inner-status-intercept'] = 'false';
+        }
+        
+        // 删除内部 header
         if (response.headers.get('eop-client-geo')) {
-          // 删除 eop-client-geo 头部
           response.headers.delete('eop-client-geo');
+        }
+        // 处理 set-cookie 头部
+        if (response.headers.has('set-cookie')) {
+          const cookieArr = response.headers.getSetCookie();
+          headers['set-cookie'] = cookieArr;
         }
         
         // 检查是否是流式响应
@@ -70,8 +241,11 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
               }
             } finally {
               reader.releaseLock();
-              res.end();
-            }
+              // scf可能会立即冻结环境上下文，导致后续日志无法输出，通过延时来确保日志输出
+              setTimeout(() => {
+                res.end();
+              }, 1);
+            } 
           }
         } else {
           // 普通响应
@@ -81,22 +255,30 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
         }
       } else {
         // 非 Response 对象，直接返回 JSON
+        const requestId = passHeaders['functions-request-id'] || '';
         res.writeHead(200, {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Functions-Request-Id': requestId,
+          'eo-pages-inner-scf-status': '200',
+          'eo-pages-inner-status-intercept': 'false'
         });
         res.end(JSON.stringify(response));
       }
     } catch (error) {
-      console.error('HandleResponse error', error);
-      // 错误处理
-      res.writeHead(500);
+      // 用户函数内部错误 内部502 - 拦截
+      const requestId = passHeaders['functions-request-id'] || '';
+      res.writeHead(502, {
+        'Functions-Request-Id': requestId,
+        'eo-pages-inner-scf-status': '502',
+        'eo-pages-inner-status-intercept': 'true'
+      });
       res.end(JSON.stringify({
         error: "Internal Server Error",
         message: error.message
       }));
-    } finally {
+    } finally { 
       const endTime = Date.now();
-      console.log(`HandleResponse: ${response?.status || 'unknown'} - ${endTime - startTime}ms`);
+      console.log(`Pages response status: ${response?.status || 'unknown'}`);
     }
   }
   
@@ -126,8 +308,6 @@ export const config = {
 };
 
 const port = 9000;
-// const port = 9000;
-
 
 // 实时流转换函数
 function createReadableStreamFromRequest(req) {
@@ -182,20 +362,48 @@ const server = createServer(async (req, res) => {
 
     const response = await handler(handlerReq, {});
 
-    response.headers.set('functions-request-id', req.headers['x-scf-request-id'] || '');
+    // 不要在这里设置 functions-request-id，避免重复
+    // response.headers.set('functions-request-id', req.headers['x-scf-request-id'] || '');
+    // const requestEndTime = Date.now();
 
-    const requestEndTime = Date.now();
+    // 解析请求路径
     const url = new URL(req.url, `http://${req.headers.host}`);
-    console.log(`Request path: ${url.pathname}`);
-    console.log(`Request processing time: ${requestEndTime - requestStartTime}ms`);
+    let pathname = url.pathname;
+
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1);
+    }
+
+    let fullPath = '';
+    if (req.headers.host === 'localhost:9000') {
+      fullPath = pathname;
+    } else {
+      const host = req.headers['eo-pages-host'];
+      const xForwardedProto = req.headers['x-forwarded-proto']; 
+
+      fullPath = (xForwardedProto || 'https') + '://' + host + req.url;
+      
+      if (fullPath.endsWith('?')) {
+        fullPath = fullPath.slice(0, -1);
+      }
+    }
+
+    console.log(`Pages request path: ${fullPath}`);
+
+    // console.log(`Request processing time: ${requestEndTime - requestStartTime}ms`);
     await handleResponse(res, response, {
       'functions-request-id': req.headers['x-scf-request-id'] || ''
     });
     return;
   } catch (error) {
-    console.error('SSR Error:', error);
-    res.statusCode = 500;
+    console.log(`Pages response status: 502`);
+    // 用户函数内部错误 内部502 - 拦截
+    const requestId = req.headers['x-scf-request-id'] || '';
+    res.statusCode = 502;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Functions-Request-Id', requestId);
+    res.setHeader('eo-pages-inner-scf-status', '502');
+    res.setHeader('eo-pages-inner-status-intercept', 'true');
     res.end('<html><body><h1>Error</h1><p>'+error.message+'</p></body></html>');
   }
 });

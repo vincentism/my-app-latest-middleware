@@ -33,28 +33,10 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
-      "page": "/aliplayer",
-      "regex": "^/aliplayer(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/aliplayer(?:/)?$"
-    },
-    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
-    },
-    {
-      "page": "/ssg",
-      "regex": "^/ssg(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/ssg(?:/)?$"
-    },
-    {
-      "page": "/test",
-      "regex": "^/test(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/test(?:/)?$"
     }
   ],
   "dataRoutes": [],

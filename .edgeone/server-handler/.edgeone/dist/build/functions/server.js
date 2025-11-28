@@ -98,18 +98,21 @@ var getHandlerFile = async (ctx) => {
   const templateVariables = {
     "{{useRegionalBlobs}}": ctx.useRegionalBlobs.toString()
   };
+  let runtime_shim = "";
+  const getRuntimeShim = ctx.getRuntimeShim;
+  if (getRuntimeShim) {
+    runtime_shim = getRuntimeShim();
+  }
   if (ctx.relativeAppDir.length !== 0) {
-    const template = await readFile(join(templatesDir, "handler-monorepo.tmpl.js"), "utf-8");
+    const template2 = await readFile(join(templatesDir, "handler-monorepo.tmpl.js"), "utf-8");
     console.log("ctx.lambdaWorkingDirectory", ctx.lambdaWorkingDirectory);
     console.log("ctx.nextServerHandler", ctx.nextServerHandler);
     templateVariables["{{cwd}}"] = posixJoin(ctx.lambdaWorkingDirectory);
     templateVariables["{{nextServerHandler}}"] = posixJoin(ctx.nextServerHandler);
-    return applyTemplateVariables(template, templateVariables);
+    return applyTemplateVariables(runtime_shim + template2, templateVariables);
   }
-  return applyTemplateVariables(
-    await readFile(join(templatesDir, "handler.tmpl.js"), "utf-8"),
-    templateVariables
-  );
+  const template = await readFile(join(templatesDir, "handler.tmpl.js"), "utf-8");
+  return applyTemplateVariables(runtime_shim + template, templateVariables);
 };
 var writeHandlerFile = async (ctx) => {
   const handler = await getHandlerFile(ctx);

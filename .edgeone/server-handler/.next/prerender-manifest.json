@@ -30,30 +30,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/test": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/test",
-      "dataRoute": "/test.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -77,37 +53,13 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
-    },
-    "/ssg": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/ssg",
-      "dataRoute": "/ssg.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "3e00ecd1eb6b16cfe78a78288dfb884f",
-    "previewModeSigningKey": "0d3ff29b23f163cc311c4ab2e2fff0c219ed414c63bc6809f6a1f061c1ad653e",
-    "previewModeEncryptionKey": "7cddaf200ecae22dc2a21be622de348a57879d7ff75f198e59c3637e8005d5c9"
+    "previewModeId": "01eb9511411cdea553786384fae30094",
+    "previewModeSigningKey": "a05faaab45e946a1d9da4028ac4e58f39168b40a3f5033b9d7c68b0c4460ddd9",
+    "previewModeEncryptionKey": "63f1431b4fd8182b8d74bbf55755d7600660ade119a5857891eabab8067dd81b"
   }
 }

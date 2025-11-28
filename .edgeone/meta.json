@@ -1,4 +1,13 @@
 {
+  "conf": {
+    "headers": [],
+    "redirects": [],
+    "rewrites": [],
+    "caches": [],
+    "outputDirectory": ".edgeone",
+    "has404": true
+  },
+  "has404": true,
   "nodeFunctionsRoutes": [
     {
       "routePath": "/error1",
@@ -51,339 +60,7 @@
   ],
   "edgeFunctionsRoutes": [
     {
-      "routePath": "/api/bare-test",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/bare-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/env-test",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/env-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/health",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/health.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/kv-test",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/kv-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/public-nodes",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/public-nodes.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/simple-test",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/simple-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/subscription/status-fallback",
-      "mountPath": "/api/subscription",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/subscription/status-fallback.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/api/test-context",
-      "mountPath": "/api",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/api/test-context.js:onRequestGet",
-        "edge-functions/api/test-context.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/api/test-middleware-import",
-      "mountPath": "/api",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/api/test-middleware-import.js:onRequestGet",
-        "edge-functions/api/test-middleware-import.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/api/ultra-simple",
-      "mountPath": "/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/api/ultra-simple.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/auth/google/callback",
-      "mountPath": "/dist/functions/api/auth/google",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/auth/google/callback.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/auth/google/redirect",
-      "mountPath": "/dist/functions/api/auth/google",
-      "method": [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE",
-        "PATCH",
-        "HEAD",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/auth/google/redirect.js:onRequest"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/auth/login",
-      "mountPath": "/dist/functions/api/auth",
-      "method": [
-        "POST",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/auth/login.js:onRequestPost",
-        "edge-functions/dist/functions/api/auth/login.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/auth/register",
-      "mountPath": "/dist/functions/api/auth",
-      "method": [
-        "POST",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/auth/register.js:onRequestPost",
-        "edge-functions/dist/functions/api/auth/register.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/bare-test",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/bare-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/env-test",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/env-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/health",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/health.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/kv-test",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/kv-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/payment/create-checkout",
-      "mountPath": "/dist/functions/api/payment",
-      "method": [
-        "POST",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/payment/create-checkout.js:onRequestPost",
-        "edge-functions/dist/functions/api/payment/create-checkout.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/payment/webhook",
-      "mountPath": "/dist/functions/api/payment",
-      "method": [
-        "POST",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/payment/webhook.js:onRequestPost",
-        "edge-functions/dist/functions/api/payment/webhook.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/proxy/auth",
-      "mountPath": "/dist/functions/api/proxy",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/proxy/auth.js:onRequestGet",
-        "edge-functions/dist/functions/api/proxy/auth.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/proxy/nodes",
-      "mountPath": "/dist/functions/api/proxy",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/proxy/nodes.js:onRequestGet",
-        "edge-functions/dist/functions/api/proxy/nodes.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/public-nodes",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/public-nodes.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/simple-test",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/simple-test.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/subscription/status-fallback",
-      "mountPath": "/dist/functions/api/subscription",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/subscription/status-fallback.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/subscription/status",
-      "mountPath": "/dist/functions/api/subscription",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/subscription/status.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/test-context",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/test-context.js:onRequestGet",
-        "edge-functions/dist/functions/api/test-context.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/test-middleware-import",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/test-middleware-import.js:onRequestGet",
-        "edge-functions/dist/functions/api/test-middleware-import.js:onRequestOptions"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/api/ultra-simple",
-      "mountPath": "/dist/functions/api",
-      "method": [
-        "GET"
-      ],
-      "module": [
-        "edge-functions/dist/functions/api/ultra-simple.js:onRequestGet"
-      ]
-    },
-    {
-      "routePath": "/dist/functions/proxy-origin",
-      "mountPath": "/dist/functions",
-      "method": [
-        "GET",
-        "POST",
-        "PUT",
-        "DELETE",
-        "PATCH",
-        "HEAD",
-        "OPTIONS"
-      ],
-      "module": [
-        "edge-functions/dist/functions/proxy-origin.js:onRequest"
-      ]
-    },
-    {
-      "routePath": "/proxy-origin",
+      "routePath": "/api",
       "mountPath": "/",
       "method": [
         "GET",
@@ -395,19 +72,10 @@
         "OPTIONS"
       ],
       "module": [
-        "edge-functions/proxy-origin.js:onRequest"
+        "edge-functions/api/index.js:onRequest"
       ]
     }
   ],
-  "conf": {
-    "headers": [],
-    "redirects": [],
-    "rewrites": [],
-    "caches": [],
-    "outputDirectory": ".edgeone",
-    "has404": true
-  },
-  "has404": true,
   "nextRoutes": [
     {
       "path": "/favicon.ico",
@@ -415,22 +83,10 @@
       "srcRoute": "/favicon.ico"
     },
     {
-      "path": "/test",
-      "isStatic": true,
-      "srcRoute": "/test",
-      "dataRoute": "/test.rsc"
-    },
-    {
       "path": "/",
       "isStatic": true,
       "srcRoute": "/",
       "dataRoute": "/index.rsc"
-    },
-    {
-      "path": "/ssg",
-      "isStatic": true,
-      "srcRoute": "/ssg",
-      "dataRoute": "/ssg.rsc"
     },
     {
       "path": "/_app"
@@ -447,12 +103,6 @@
     },
     {
       "path": "/_not-found"
-    },
-    {
-      "path": "/api/test"
-    },
-    {
-      "path": "/aliplayer"
     },
     {
       "path": "/_next/image"

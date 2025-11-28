@@ -34,6 +34,7 @@ var PluginContext = class {
   /** Absolute path of the next runtime plugin directory */
   pluginDir = PLUGIN_DIR;
   serverlessWrapHandler;
+  getRuntimeShim;
   get relPublishDir() {
     return this.constants.PUBLISH_DIR ?? join(this.constants.PACKAGE_PATH || "", DEFAULT_PUBLISH_DIR);
   }
@@ -168,6 +169,7 @@ var PluginContext = class {
     this.pluginVersion = this.packageJSON.version;
     this.utils = options.utils;
     this.serverlessWrapHandler = options.serverlessWrapHandler;
+    this.getRuntimeShim = options.getRuntimeShim;
   }
   /** Resolves a path correctly with mono repository awareness for .edgeone directories mainly  */
   resolveFromPackagePath(...args) {

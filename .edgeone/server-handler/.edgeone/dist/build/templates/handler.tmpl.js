@@ -11,24 +11,52 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
   async function handleResponse(res, response, passHeaders = {}) {
     const startTime = Date.now();
     
+    // 没有响应 - 404 拦截
     if (!response) {
-      res.writeHead(404);
+      const requestId = passHeaders['functions-request-id'] || '';
+      res.writeHead(404, {
+        'Functions-Request-Id': requestId,
+        'eo-pages-inner-scf-status': '404',
+        'eo-pages-inner-status-intercept': 'true'
+      });
       res.end(JSON.stringify({
         error: "Not Found",
         message: "The requested path does not exist"
       }));
       const endTime = Date.now();
-      console.log(`HandleResponse: 404 Not Found - ${endTime - startTime}ms`);
+      console.log(`Pages response status: 404`);
       return;
     }
 
     try {
       if (response instanceof Response) {
+        const requestId = passHeaders['functions-request-id'] || '';
+        const responseStatus = response.status;
+        
         const headers = Object.fromEntries(response.headers);
         Object.assign(headers, passHeaders);
+        
+        // 添加状态码区分的 headers
+        headers['Functions-Request-Id'] = requestId;
+        
+        // 如果 Response 中已经设置了，使用它的值；否则使用 responseStatus
+        if (!headers['eo-pages-inner-scf-status']) {
+          headers['eo-pages-inner-scf-status'] = String(responseStatus);
+        }
+        
+        // 如果 Response 中已经设置了，使用它的值；否则默认为 false
+        if (!headers['eo-pages-inner-status-intercept']) {
+          headers['eo-pages-inner-status-intercept'] = 'false';
+        }
+        
+        // 删除内部 header
         if (response.headers.get('eop-client-geo')) {
-          // 删除 eop-client-geo 头部
           response.headers.delete('eop-client-geo');
+        }
+        // 处理 set-cookie 头部
+        if (response.headers.has('set-cookie')) {
+          const cookieArr = response.headers.getSetCookie();
+          headers['set-cookie'] = cookieArr;
         }
         
         // 检查是否是流式响应
@@ -70,8 +98,11 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
               }
             } finally {
               reader.releaseLock();
-              res.end();
-            }
+              // scf可能会立即冻结环境上下文，导致后续日志无法输出，通过延时来确保日志输出
+              setTimeout(() => {
+                res.end();
+              }, 1);
+            } 
           }
         } else {
           // 普通响应
@@ -81,22 +112,30 @@ import { getTracer } from './.edgeone/dist/run/handlers/tracer.cjs';
         }
       } else {
         // 非 Response 对象，直接返回 JSON
+        const requestId = passHeaders['functions-request-id'] || '';
         res.writeHead(200, {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Functions-Request-Id': requestId,
+          'eo-pages-inner-scf-status': '200',
+          'eo-pages-inner-status-intercept': 'false'
         });
         res.end(JSON.stringify(response));
       }
     } catch (error) {
-      console.error('HandleResponse error', error);
-      // 错误处理
-      res.writeHead(500);
+      // 用户函数内部错误 内部502 - 拦截
+      const requestId = passHeaders['functions-request-id'] || '';
+      res.writeHead(502, {
+        'Functions-Request-Id': requestId,
+        'eo-pages-inner-scf-status': '502',
+        'eo-pages-inner-status-intercept': 'true'
+      });
       res.end(JSON.stringify({
         error: "Internal Server Error",
         message: error.message
       }));
-    } finally {
+    } finally { 
       const endTime = Date.now();
-      console.log(`HandleResponse: ${response?.status || 'unknown'} - ${endTime - startTime}ms`);
+      console.log(`Pages response status: ${response?.status || 'unknown'}`);
     }
   }
   
@@ -126,8 +165,6 @@ export const config = {
 };
 
 const port = 9000;
-// const port = 9000;
-
 
 // 实时流转换函数
 function createReadableStreamFromRequest(req) {
@@ -182,20 +219,48 @@ const server = createServer(async (req, res) => {
 
     const response = await handler(handlerReq, {});
 
-    response.headers.set('functions-request-id', req.headers['x-scf-request-id'] || '');
+    // 不要在这里设置 functions-request-id，避免重复
+    // response.headers.set('functions-request-id', req.headers['x-scf-request-id'] || '');
+    // const requestEndTime = Date.now();
 
-    const requestEndTime = Date.now();
+    // 解析请求路径
     const url = new URL(req.url, `http://${req.headers.host}`);
-    console.log(`Request path: ${url.pathname}`);
-    console.log(`Request processing time: ${requestEndTime - requestStartTime}ms`);
+    let pathname = url.pathname;
+
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1);
+    }
+
+    let fullPath = '';
+    if (req.headers.host === 'localhost:9000') {
+      fullPath = pathname;
+    } else {
+      const host = req.headers['eo-pages-host'];
+      const xForwardedProto = req.headers['x-forwarded-proto']; 
+
+      fullPath = (xForwardedProto || 'https') + '://' + host + req.url;
+      
+      if (fullPath.endsWith('?')) {
+        fullPath = fullPath.slice(0, -1);
+      }
+    }
+
+    console.log(`Pages request path: ${fullPath}`);
+
+    // console.log(`Request processing time: ${requestEndTime - requestStartTime}ms`);
     await handleResponse(res, response, {
       'functions-request-id': req.headers['x-scf-request-id'] || ''
     });
     return;
   } catch (error) {
-    console.error('SSR Error:', error);
-    res.statusCode = 500;
+    console.log(`Pages response status: 502`);
+    // 用户函数内部错误 内部502 - 拦截
+    const requestId = req.headers['x-scf-request-id'] || '';
+    res.statusCode = 502;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Functions-Request-Id', requestId);
+    res.setHeader('eo-pages-inner-scf-status', '502');
+    res.setHeader('eo-pages-inner-status-intercept', 'true');
     res.end('<html><body><h1>Error</h1><p>'+error.message+'</p></body></html>');
   }
 });
