@@ -90,7 +90,7 @@ function detectLanguage(acceptLanguage: string): 'zh' | 'en' {
 export const config = {
   runtime: 'nodejs',
   matcher: [
-    '/xxx', // 只在首页执行重定向
+    '/', // 只在首页执行重定向
     // 如果要匹配更多路径，可以添加:
     // '/about',
     // '/contact',
