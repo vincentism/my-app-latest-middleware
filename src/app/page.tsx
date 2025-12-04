@@ -1,10 +1,38 @@
 import Image from "next/image";
 
+
+// 测试不同场景的请求路径
+export function ImageTest() {
+  return (
+    <div>
+      {/* 场景1: 小图标 SVG - 直接访问 */}
+      <Image src="/next.svg" width={180} alt="" height={38} />
+      {/* 实际: GET /next.svg */}
+      
+      {/* 场景2: 大尺寸 JPG - 触发优化 */}
+      <Image src="/large-photo.jpg" alt="" width={1200} height={800} />
+      {/* 实际: GET /_next/image?url=%2Flarge-photo.jpg&w=1200&q=75 */}
+      
+      {/* 场景3: 远程图片 - 必定优化 */}
+      <Image 
+        src="https://cloudcache.tencent-cloud.com/qcloud/ui/static/profession_static/06ab3fb5-856f-43a5-b632-197c63fad967.png"
+        width={180} 
+        height={38}
+        alt=""
+      />
+      {/* 实际: GET /_next/image?url=https%3A%2F%2Fcloudcache... */}
+
+      {/* 实际: GET /photo.jpg */}
+    </div>
+  );
+}
+
+
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
+        {/* <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
@@ -12,6 +40,15 @@ export default function Home() {
           height={38}
           priority
         />
+
+        <Image
+          src="https://cloudcache.tencent-cloud.com/qcloud/ui/static/profession_static/2ef77bf5-f1f3-4240-ae6f-0f0b72a6efef.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+        /> */}
+
+        <ImageTest />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
@@ -101,3 +138,5 @@ export default function Home() {
     </div>
   );
 }
+
+

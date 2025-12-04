@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
   // 图片优化
   images: {
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cloudcache.tencent-cloud.com',
+        pathname: '/qcloud/ui/static/**',
+      },
+    ],
   },
 
   // 开发环境指示器

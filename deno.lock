@@ -12,15 +12,13 @@
     "packageJson": {
       "dependencies": [
         "npm:@eslint/eslintrc@^3",
-        "npm:@netlify/next@^1.4.9",
         "npm:@tailwindcss/postcss@^4",
         "npm:@types/node@^20",
         "npm:@types/react-dom@^19",
         "npm:@types/react@^19",
-        "npm:edgeone@^1.1.4",
         "npm:eslint-config-next@15.4.3",
         "npm:eslint@^9",
-        "npm:next@15.4.3",
+        "npm:next@^16.1.0-canary.4",
         "npm:react-dom@19.1.0",
         "npm:react@19.1.0",
         "npm:tailwindcss@^4",

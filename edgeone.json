@@ -1,3 +1,11 @@
 {
-  "outputDirectory": ".edgeone"
+  "outputDirectory": ".edgeone",
+  "rewrites": [
+    {
+      "source": "/_next/image?url=*",
+      "destination": "/:path"
+    }
+  ]
+
+
 }
