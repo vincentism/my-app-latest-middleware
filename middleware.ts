@@ -14,21 +14,21 @@ export function middleware(request) {
   console.log('request in middleware', request.url);
 
   // 返回 502 Bad Gateway 错误响应
-  return new Response(
-    JSON.stringify({ 
-      error: 'Bad Gateway',
-      message: '测试 502 错误响应',
-      timestamp: new Date().toISOString()
-    }), 
-    { 
-      status: 502,
-      statusText: 'Bad Gateway',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Error-Source': 'middleware'
-      }
-    }
-  );
+  // return new Response(
+  //   JSON.stringify({ 
+  //     error: 'Bad Gateway',
+  //     message: '测试 502 错误响应',
+  //     timestamp: new Date().toISOString()
+  //   }), 
+  //   { 
+  //     status: 502,
+  //     statusText: 'Bad Gateway',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'X-Error-Source': 'middleware'
+  //     }
+  //   }
+  // );
 
   // return new Response("Blog single match:");
   // console.log('in middleware - buffer:', buffer);  
@@ -40,7 +40,7 @@ export function middleware(request) {
 export const config = {
   // runtime: 'node',
   matcher: [
-    '/api',
+    '/',
 
   ],
 }
