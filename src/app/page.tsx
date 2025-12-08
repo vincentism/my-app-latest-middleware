@@ -141,24 +141,24 @@
 
 
 
-// 'use client';
+'use client';
 
-// import { useRouter } from 'next/navigation';
-// import { useEffect } from 'react';
-
-// export default function HomePage() {
-//   const router = useRouter();
-  
-//   useEffect(() => {
-//     router.push('/home');
-//   }, [router]);
-  
-//   return null;
-// }
-
-
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function HomePage() {
-  redirect('/home');
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.push('/home');
+  }, [router]);
+  
+  return null;
 }
+
+
+// import { redirect } from 'next/navigation';
+
+// export default function HomePage() {
+//   redirect('/home');
+// }

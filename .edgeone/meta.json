@@ -78,10 +78,9 @@
   ],
   "nextRoutes": [
     {
-      "path": "/en",
+      "path": "/favicon.ico",
       "isStatic": true,
-      "srcRoute": "/en",
-      "dataRoute": "/en.rsc"
+      "srcRoute": "/favicon.ico"
     },
     {
       "path": "/home",
@@ -90,21 +89,22 @@
       "dataRoute": "/home.rsc"
     },
     {
-      "path": "/",
-      "isStatic": true,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc"
-    },
-    {
       "path": "/zh",
       "isStatic": true,
       "srcRoute": "/zh",
       "dataRoute": "/zh.rsc"
     },
     {
-      "path": "/favicon.ico",
+      "path": "/",
       "isStatic": true,
-      "srcRoute": "/favicon.ico"
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc"
+    },
+    {
+      "path": "/en",
+      "isStatic": true,
+      "srcRoute": "/en",
+      "dataRoute": "/en.rsc"
     },
     {
       "path": "/_app"
