@@ -2,7 +2,7 @@ import Image from "next/image";
 
 
 // 测试不同场景的请求路径
-export function ImageTest() {
+export default function HomePage() {
   return (
     <div>
       {/* 场景1: 小图标 SVG - 直接访问 */}
