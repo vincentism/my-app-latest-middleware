@@ -1,31 +1,31 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 
-// // 测试不同场景的请求路径
-// export function ImageTest() {
-//   return (
-//     <div>
-//       {/* 场景1: 小图标 SVG - 直接访问 */}
-//       <Image src="/next.svg" width={180} alt="" height={38} />
-//       {/* 实际: GET /next.svg */}
+// 测试不同场景的请求路径
+export function ImageTest() {
+  return (
+    <div>
+      {/* 场景1: 小图标 SVG - 直接访问 */}
+      <Image src="/next.svg" width={180} alt="" height={38} />
+      {/* 实际: GET /next.svg */}
       
-//       {/* 场景2: 大尺寸 JPG - 触发优化 */}
-//       <Image src="/large-photo.jpg" alt="" width={1200} height={800} />
-//       {/* 实际: GET /_next/image?url=%2Flarge-photo.jpg&w=1200&q=75 */}
+      {/* 场景2: 大尺寸 JPG - 触发优化 */}
+      <Image src="/large-photo.jpg" alt="" width={1200} height={800} />
+      {/* 实际: GET /_next/image?url=%2Flarge-photo.jpg&w=1200&q=75 */}
       
-//       {/* 场景3: 远程图片 - 必定优化 */}
-//       <Image 
-//         src="https://cloudcache.tencent-cloud.com/qcloud/ui/static/profession_static/06ab3fb5-856f-43a5-b632-197c63fad967.png"
-//         width={180} 
-//         height={38}
-//         alt=""
-//       />
-//       {/* 实际: GET /_next/image?url=https%3A%2F%2Fcloudcache... */}
+      {/* 场景3: 远程图片 - 必定优化 */}
+      <Image 
+        src="https://cloudcache.tencent-cloud.com/qcloud/ui/static/profession_static/06ab3fb5-856f-43a5-b632-197c63fad967.png"
+        width={180} 
+        height={38}
+        alt=""
+      />
+      {/* 实际: GET /_next/image?url=https%3A%2F%2Fcloudcache... */}
 
-//       {/* 实际: GET /photo.jpg */}
-//     </div>
-//   );
-// }
+      {/* 实际: GET /photo.jpg */}
+    </div>
+  );
+}
 
 
 // export default function Home() {
@@ -141,20 +141,20 @@
 
 
 
-'use client';
+// 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
 
-export default function HomePage() {
-  const router = useRouter();
+// export default function HomePage() {
+//   const router = useRouter();
   
-  useEffect(() => {
-    router.push('/home');
-  }, [router]);
+//   useEffect(() => {
+//     router.push('/home');
+//   }, [router]);
   
-  return null;
-}
+//   return null;
+// }
 
 
 // import { redirect } from 'next/navigation';
