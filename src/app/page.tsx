@@ -10,16 +10,16 @@ export default function HomePage() {
       {/* 实际: GET /next.svg */}
       
       {/* 场景2: 大尺寸 JPG - 触发优化 */}
-      <Image src="/large-photo.jpg" alt="" width={1200} height={800} />
+      {/* <Image src="/large-photo.jpg" alt="" width={1200} height={800} /> */}
       {/* 实际: GET /_next/image?url=%2Flarge-photo.jpg&w=1200&q=75 */}
       
       {/* 场景3: 远程图片 - 必定优化 */}
-      <Image 
+      {/* <Image 
         src="https://cloudcache.tencent-cloud.com/qcloud/ui/static/profession_static/06ab3fb5-856f-43a5-b632-197c63fad967.png"
         width={180} 
         height={38}
         alt=""
-      />
+      /> */}
       {/* 实际: GET /_next/image?url=https%3A%2F%2Fcloudcache... */}
 
       {/* 实际: GET /photo.jpg */}

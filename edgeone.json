@@ -1,11 +1,10 @@
 {
   "outputDirectory": ".edgeone",
-  "rewrites": [
-    {
-      "source": "/_next/image\\?url=(.*)",
-      "destination": "/$1"
-    }
-  ]
-
-
+  "redirects": [
+      {
+        "source": "/articles/:id",
+        "destination": "/news-articles/:id",
+        "statusCode": 301
+      }
+    ]
 }

@@ -1,46 +1,42 @@
-
-// import fs from 'fs';  // ❌ Edge Runtime 不支持
-
-// import buffer from 'buffer';
-// import NextRespone 
-
-
-export function middleware(request) {
-  // const data = fs.readFileSync('file.txt');  // ❌ 会报错
-  // console.log('data:', data);
-
-  const { redirect, rewrite, geo, clientIp, env, waitUntil } = request;
-
-  console.log('request in middleware', request.url);
-
-  // 返回 502 Bad Gateway 错误响应
-  return new Response(
-    JSON.stringify({
-      message: '测试 middleware 响应',
-      timestamp: new Date().toISOString()
-    }), 
-    { 
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'X-middleware-text': 'middleware'
-      }
-    }
-  );
-
-  // return new Response("Blog single match:");
-  // console.log('in middleware - buffer:', buffer);  
-  // 添加自定义响应头
-  // response.headers.set('x-middleware-executed-with-root', buffer.Buffer.from('hello').toString('base64'));
+// 中间件文件约定位于根目录下 middleware.js 或 middleware.ts
+// 导出方法如下：
+export function middleware(context) {
+  // const { request, next, redirect, rewrite } = context;
   
+  // const urlInfo = new URL(request.url);
+  // 重定向
+  // if (urlInfo.pathname === '/normal') {
+  //   return redirect('/blog/index.html');
+  // }
+
+  // 重写
+  // return rewrite('/api'); //相对路径
+  // or
+  // return rewrite('https://www.google.com'); // 绝对路径
+  
+  // 请求透传，return next方法或不返回任何值
+  // return next();
+
+  // 修改请求 header
+  // return next({
+  //     headers: {
+  //       'x-custom-header': 'middleware-added',
+  //       'x-request-id': Math.random(),
+  //     }
+  // });
+
+  // 直接返回响应
+  // return new Response('');
+
+
 }
 
+// 不导出config，默认匹配所有路由
 export const config = {
-  // runtime: 'node',
   matcher: [
-    '/normal',
-
+    // '/:path*', // 匹配所有路由
+    // '/normal/:path*', // 匹配动态路由
+    // '/api', // 匹配边缘函数
+    // '/globe.svg', // 匹配静态资源
   ],
 }
-
-
