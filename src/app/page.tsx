@@ -1,10 +1,20 @@
 import Image from "next/image";
+import { headers } from "next/headers";
 
 
 // 测试不同场景的请求路径
-export default function HomePage() {
+export default async function HomePage() {
+  const headersList = await headers();
+  const host = headersList.get("host");
+  const eohost = headersList.get("eo-pages-host");
+  console.log("Host header:", host);
+
   return (
     <div>
+
+      <p>{headersList}</p>
+      <p>Host: {host}</p>
+      <p>eohost: {host}</p>
       {/* 场景1: 小图标 SVG - 直接访问 */}
       <Image src="/next.svg" width={180} alt="" height={38} />
       {/* 实际: GET /next.svg */}

@@ -5,6 +5,7 @@
  */
 
 export function middleware(request) {
+  return 
   const url = new URL(request.url);
   const pathname = url.pathname;
 
