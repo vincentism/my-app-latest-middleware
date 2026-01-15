@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/testre/route": "/api/testre",
+  "/favicon.ico/route": "/favicon.ico",
+  "/api/items/route": "/api/items",
+  "/en/page": "/en",
+  "/home/page": "/home",
+  "/zh/page": "/zh",
+  "/page": "/"
+}

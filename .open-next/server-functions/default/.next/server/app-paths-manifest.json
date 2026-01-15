@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/testre/route": "app/api/testre/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/items/route": "app/api/items/route.js",
+  "/en/page": "app/en/page.js",
+  "/home/page": "app/home/page.js",
+  "/zh/page": "app/zh/page.js",
+  "/page": "app/page.js"
+}
