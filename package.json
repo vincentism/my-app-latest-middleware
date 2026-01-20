@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.14.8",
+    "@vercel/functions": "^3.3.6",
     "better-auth": "^1.4.13",
     "better-sqlite3": "^12.6.0",
     "esbuild-plugin-polyfill-node": "^0.3.0",
