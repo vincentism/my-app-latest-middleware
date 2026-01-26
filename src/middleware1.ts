@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
 
   console.log('ip', ip);
 
+
   // return new Response('111' + request?.toString());
  
   // ...

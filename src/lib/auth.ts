@@ -1,8 +1,9 @@
 import { betterAuth } from "better-auth";
 
 export const auth = betterAuth({
+  basePath: "/api/auth",
   emailAndPassword: {
-    enabled: true,  // 启用 email/password 注册登录
+    enabled: true,
   },
   socialProviders: { 
     github: { 
@@ -11,6 +12,3 @@ export const auth = betterAuth({
     }, 
   }, 
 });
-
-// 导出类型
-export type Session = typeof auth.$Infer.Session;

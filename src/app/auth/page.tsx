@@ -46,7 +46,7 @@ export default function AuthPage() {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: "/auth", // 登录成功后跳转回当前页面
+        callbackURL: window.location.origin + "/auth", // 使用完整 URL
       });
     } catch (err) {
       setError("GitHub 登录失败，请重试");
