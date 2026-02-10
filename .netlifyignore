@@ -1,0 +1,4 @@
+# 防止 Go 源码被 Next.js 函数打包
+netlify/functions/*.go
+netlify/functions/go.mod
+netlify/functions/go.sum

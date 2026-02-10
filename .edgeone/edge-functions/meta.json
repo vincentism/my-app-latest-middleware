@@ -1,0 +1,134 @@
+{
+  "routes": [
+    {
+      "routePath": "/basic/body",
+      "mountPath": "/basic",
+      "method": [
+        "POST"
+      ],
+      "module": [
+        "edge-functions/basic/body.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/basic/context",
+      "mountPath": "/basic",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/basic/context.ts:onRequest"
+      ]
+    },
+    {
+      "routePath": "/basic/cookie",
+      "mountPath": "/basic",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/basic/cookie.ts:onRequest"
+      ]
+    },
+    {
+      "routePath": "/basic/hello",
+      "mountPath": "/basic",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/basic/hello.ts:onRequest"
+      ]
+    },
+    {
+      "routePath": "/basic/methods",
+      "mountPath": "/basic",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/basic/methods.ts:onRequest",
+        "edge-functions/basic/methods.ts:onRequestGet",
+        "edge-functions/basic/methods.ts:onRequestPost",
+        "edge-functions/basic/methods.ts:onRequestDelete",
+        "edge-functions/basic/methods.ts:onRequestPatch",
+        "edge-functions/basic/methods.ts:onRequestPut",
+        "edge-functions/basic/methods.ts:onRequestHead",
+        "edge-functions/basic/methods.ts:onRequestOptions"
+      ]
+    },
+    {
+      "routePath": "/basic/query",
+      "mountPath": "/basic",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/basic/query.ts:onRequest"
+      ]
+    },
+    {
+      "routePath": "/kv/test1",
+      "mountPath": "/kv",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/kv/test1.js:onRequest"
+      ]
+    },
+    {
+      "routePath": "/kv/test2",
+      "mountPath": "/kv",
+      "method": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "module": [
+        "edge-functions/kv/test2.js:onRequest"
+      ]
+    }
+  ],
+  "middleware": null
+}
