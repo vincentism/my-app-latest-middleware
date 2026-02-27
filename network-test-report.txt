@@ -1,0 +1,61 @@
+========================================
+        网络请求分析报告
+========================================
+
+⏰ 测试时间: 2026/2/11 16:21:19
+
+📊 请求统计:
+   总请求数: 7
+   成功响应: 7 ✓
+   失败请求: 0 ✓
+
+📁 按资源类型分类:
+   script         : 4
+   document       : 1
+   stylesheet     : 1
+   image          : 1
+
+
+========================================
+        详细请求列表
+========================================
+
+✓ [200] GET http://localhost:8088/
+   类型: document
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/_next/static/css/app/layout.css?v=1770798075527
+   类型: stylesheet
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/_next/static/chunks/webpack.js?v=1770798075527
+   类型: script
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/_next/static/chunks/app-pages-internals.js
+   类型: script
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/_next/static/chunks/app/page.js
+   类型: script
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/_next/static/chunks/main-app.js?v=1770798075527
+   类型: script
+   缓存: 否
+
+✓ [200] GET http://localhost:8088/next.svg
+   类型: image
+   缓存: 否
+
+
+========================================
+        浏览器控制台日志
+========================================
+
+[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[log] %c%s%c Host header: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   localhost:6700
+[warning] Image with src "http://localhost:8088/next.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+========================================
+           报告结束
+========================================

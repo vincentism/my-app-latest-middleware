@@ -1,0 +1,126 @@
+
+======================================================================
+                    完整网络测试报告
+======================================================================
+
+⏰ 测试时间: 2026/2/11 16:22:08
+
+📊 总体统计:
+   测试页面数: 5
+   总请求数: 29
+   成功请求: 28 ✓
+   失败请求: 1 ⚠️
+
+----------------------------------------------------------------------
+📄 首页
+   URL: http://localhost:8088/
+   请求数: 7
+   成功: 7
+   失败: 0
+
+   📁 资源类型:
+      script      : 4
+      document    : 1
+      stylesheet  : 1
+      image       : 1
+
+   📋 所有请求:
+      ✓ [200] http://localhost:8088/
+      ✓ [200] http://localhost:8088/_next/static/css/app/layout.css?v=1770798114095
+      ✓ [200] http://localhost:8088/_next/static/chunks/webpack.js?v=1770798114095
+      ✓ [200] http://localhost:8088/_next/static/chunks/app-pages-internals.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/app/page.js
+      ✓ [200] http://localhost:8088/next.svg
+      ✓ [200] http://localhost:8088/_next/static/chunks/main-app.js?v=1770798114095
+
+   ⚠️  控制台警告/错误:
+      [warning] Image with src "http://localhost:8088/next.svg" has either width or height modified, but n...
+
+----------------------------------------------------------------------
+📄 认证页面
+   URL: http://localhost:8088/auth
+   请求数: 7
+   成功: 6
+   失败: 1
+
+   ❌ 错误:
+      [网络错误] GET https://test-v15-middleware-ai3phoqt.edgeone.cool/api/auth/get-session - net::ERR_FAILED
+
+   📁 资源类型:
+      script      : 4
+      document    : 1
+      stylesheet  : 1
+      fetch       : 1
+
+   📋 所有请求:
+      ✓ [200] http://localhost:8088/auth
+      ✓ [200] http://localhost:8088/_next/static/css/app/layout.css?v=1770798117198
+      ✓ [200] http://localhost:8088/_next/static/chunks/webpack.js?v=1770798117198
+      ✓ [200] http://localhost:8088/_next/static/chunks/app-pages-internals.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/app/auth/page.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/main-app.js?v=1770798117198
+
+   ⚠️  控制台警告/错误:
+      [error] Access to fetch at 'https://test-v15-middleware-ai3phoqt.edgeone.cool/api/auth/get-session' ...
+      [error] Failed to load resource: net::ERR_FAILED
+
+----------------------------------------------------------------------
+📄 主页
+   URL: http://localhost:8088/home
+   请求数: 5
+   成功: 5
+   失败: 0
+
+   📁 资源类型:
+      script      : 3
+      document    : 1
+      stylesheet  : 1
+
+   📋 所有请求:
+      ✓ [200] http://localhost:8088/home
+      ✓ [200] http://localhost:8088/_next/static/css/app/layout.css?v=1770798120690
+      ✓ [200] http://localhost:8088/_next/static/chunks/webpack.js?v=1770798120690
+      ✓ [200] http://localhost:8088/_next/static/chunks/app-pages-internals.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/main-app.js?v=1770798120690
+
+----------------------------------------------------------------------
+📄 英文页面
+   URL: http://localhost:8088/en
+   请求数: 5
+   成功: 5
+   失败: 0
+
+   📁 资源类型:
+      script      : 3
+      document    : 1
+      stylesheet  : 1
+
+   📋 所有请求:
+      ✓ [200] http://localhost:8088/en
+      ✓ [200] http://localhost:8088/_next/static/css/app/layout.css?v=1770798123500
+      ✓ [200] http://localhost:8088/_next/static/chunks/webpack.js?v=1770798123500
+      ✓ [200] http://localhost:8088/_next/static/chunks/app-pages-internals.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/main-app.js?v=1770798123500
+
+----------------------------------------------------------------------
+📄 中文页面
+   URL: http://localhost:8088/zh
+   请求数: 5
+   成功: 5
+   失败: 0
+
+   📁 资源类型:
+      script      : 3
+      document    : 1
+      stylesheet  : 1
+
+   📋 所有请求:
+      ✓ [200] http://localhost:8088/zh
+      ✓ [200] http://localhost:8088/_next/static/css/app/layout.css?v=1770798126303
+      ✓ [200] http://localhost:8088/_next/static/chunks/webpack.js?v=1770798126303
+      ✓ [200] http://localhost:8088/_next/static/chunks/app-pages-internals.js
+      ✓ [200] http://localhost:8088/_next/static/chunks/main-app.js?v=1770798126303
+
+======================================================================
+                      报告结束
+======================================================================
