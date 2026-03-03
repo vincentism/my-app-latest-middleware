@@ -1,3 +1,0 @@
-fastapi>=0.100.0
-sanic>=21.0
-django>=4.0
