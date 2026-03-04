@@ -136,6 +136,12 @@ async def root():
             
             <div class="frameworks">
                 <div class="framework-card">
+                    <h3>🐍 Python 函数</h3>
+                    <p>不依赖任何框架的纯 Python 函数，直接处理请求和响应</p>
+                    <a href="/demo-plain">访问 Demo</a>
+                </div>
+                
+                <div class="framework-card">
                     <h3>⚡ FastAPI</h3>
                     <p>现代、快速的异步 Web 框架，支持自动 API 文档和类型提示</p>
                     <a href="/demo-fastapi">访问 Demo</a>
@@ -196,6 +202,12 @@ async def api_info():
         "name": "Python Cloud Functions Test Suite",
         "version": "1.0.0",
         "frameworks": {
+            "plain": {
+                "name": "Python 函数",
+                "version": "Python 3.x",
+                "path": "/demo-plain",
+                "features": ["no-framework", "lightweight", "simple", "direct"]
+            },
             "fastapi": {
                 "name": "FastAPI",
                 "version": "0.100.0+",
