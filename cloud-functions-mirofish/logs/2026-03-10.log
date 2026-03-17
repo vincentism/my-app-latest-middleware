@@ -1,0 +1,153 @@
+[2026-03-10 11:11:45] INFO [mirofish.create_app:38] ==================================================
+[2026-03-10 11:11:45] INFO [mirofish.create_app:39] MiroFish Backend 启动中...
+[2026-03-10 11:11:45] INFO [mirofish.create_app:40] ==================================================
+[2026-03-10 11:11:45] INFO [mirofish.create_app:49] 已注册模拟进程清理函数
+[2026-03-10 11:11:45] INFO [mirofish.create_app:77] MiroFish Backend 启动完成
+[2026-03-10 11:12:46] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-03-10 11:12:46] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-03-10 11:12:46] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-03-10 11:12:46] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: 如果武汉大学发布了对肖某某处分的撤销公告，大众舆情走向会怎么样
+...
+[2026-03-10 11:12:46] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_9f3183910679
+[2026-03-10 11:12:48] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 20862 字符
+[2026-03-10 11:12:48] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-03-10 11:12:49] DEBUG [mirofish.request.log_response:62] 响应: 500
+[2026-03-10 11:12:50] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-03-10 11:12:50] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-03-10 11:12:50] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-03-10 11:12:50] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: 如果武汉大学发布了对肖某某处分的撤销公告，大众舆情走向会怎么样
+...
+[2026-03-10 11:12:50] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_c3b39c20101f
+[2026-03-10 11:12:50] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 20862 字符
+[2026-03-10 11:12:50] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-03-10 11:12:51] DEBUG [mirofish.request.log_response:62] 响应: 500
+[2026-03-10 11:12:53] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-03-10 11:12:53] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-03-10 11:12:53] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-03-10 11:12:53] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: 如果武汉大学发布了对肖某某处分的撤销公告，大众舆情走向会怎么样
+...
+[2026-03-10 11:12:53] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_301a36c74d58
+[2026-03-10 11:12:53] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 20862 字符
+[2026-03-10 11:12:53] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-03-10 11:12:54] DEBUG [mirofish.request.log_response:62] 响应: 500
+[2026-03-10 11:16:10] INFO [mirofish.create_app:38] ==================================================
+[2026-03-10 11:16:10] INFO [mirofish.create_app:39] MiroFish Backend 启动中...
+[2026-03-10 11:16:10] INFO [mirofish.create_app:40] ==================================================
+[2026-03-10 11:16:10] INFO [mirofish.create_app:49] 已注册模拟进程清理函数
+[2026-03-10 11:16:10] INFO [mirofish.create_app:77] MiroFish Backend 启动完成
+[2026-03-10 11:16:33] DEBUG [mirofish.request.log_request:55] 请求: GET /api/simulation/history
+[2026-03-10 11:16:33] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:17:17] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-03-10 11:17:17] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-03-10 11:17:17] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-03-10 11:17:17] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: 如果武汉大学发布了对肖某某处分的撤销公告，大众舆情走向会怎么样
+...
+[2026-03-10 11:17:17] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_525a31b567c1
+[2026-03-10 11:17:17] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 20862 字符
+[2026-03-10 11:17:17] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-03-10 11:18:13] INFO [mirofish.api.generate_ontology:226] 本体生成完成: 10 个实体类型, 8 个关系类型
+[2026-03-10 11:18:13] INFO [mirofish.api.generate_ontology:235] === 本体生成完成 === 项目ID: proj_525a31b567c1
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_request:55] 请求: OPTIONS /api/graph/build
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/build
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_request:57] 请求体: {'project_id': 'proj_525a31b567c1'}
+[2026-03-10 11:18:13] INFO [mirofish.api.build_graph:283] === 开始构建图谱 ===
+[2026-03-10 11:18:13] DEBUG [mirofish.api.build_graph:299] 请求参数: project_id=proj_525a31b567c1
+[2026-03-10 11:18:13] INFO [mirofish.api.build_graph:366] 创建图谱构建任务: task_id=c0fad8ab-53b5-4d15-b003-386869fe3643, project_id=proj_525a31b567c1
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:13] INFO [mirofish.build.build_task:377] [c0fad8ab-53b5-4d15-b003-386869fe3643] 开始构建图谱...
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:15] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:15] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:17] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:17] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:19] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:19] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:21] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:21] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:23] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:18:23] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:23] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:23] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:24] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:18:24] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:25] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:25] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:27] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:27] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:29] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:29] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:31] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:31] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:33] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:18:33] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:33] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:33] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:34] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:18:34] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:35] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:35] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:37] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:37] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:39] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:39] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:41] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:41] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:43] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:18:43] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:43] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:43] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:43] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:18:44] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:45] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:45] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:47] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:47] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:49] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:49] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:52] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:52] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:53] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:18:53] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:53] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:53] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:53] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:18:54] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:55] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:55] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:57] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:57] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:18:59] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:18:59] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:01] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:01] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:03] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:19:03] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:03] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:03] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:03] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:19:04] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:05] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:05] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:07] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:07] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:09] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:09] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:11] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:11] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:13] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/project/proj_525a31b567c1
+[2026-03-10 11:19:13] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:13] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:14] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/data/mirofish_3f092bd76d114b49
+[2026-03-10 11:19:14] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:15] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:15] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:17] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:17] DEBUG [mirofish.request.log_response:62] 响应: 200
+[2026-03-10 11:19:19] DEBUG [mirofish.request.log_request:55] 请求: GET /api/graph/task/c0fad8ab-53b5-4d15-b003-386869fe3643
+[2026-03-10 11:19:19] DEBUG [mirofish.request.log_response:62] 响应: 200

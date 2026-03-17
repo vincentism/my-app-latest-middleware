@@ -1,0 +1,423 @@
+{
+  "project_id": "proj_525a31b567c1",
+  "name": "Unnamed Project",
+  "status": "graph_building",
+  "created_at": "2026-03-10T11:17:17.330740",
+  "updated_at": "2026-03-10T11:18:15.180321",
+  "files": [
+    {
+      "filename": "武汉大学品牌声誉深度分析报告.pdf",
+      "size": 2893754
+    }
+  ],
+  "total_text_length": 20862,
+  "ontology": {
+    "entity_types": [
+      {
+        "name": "Student",
+        "description": "在校本科生或研究生，具有发声、维权、组织行动能力的个体学生主体",
+        "attributes": [
+          {
+            "name": "student_id",
+            "type": "text",
+            "description": "学号或身份标识（脱敏后）"
+          },
+          {
+            "name": "enrollment_status",
+            "type": "text",
+            "description": "在读/毕业/休学等状态"
+          },
+          {
+            "name": "campus_location",
+            "type": "text",
+            "description": "所属校区或宿舍区域"
+          }
+        ],
+        "examples": [
+          "肖某某",
+          "杨景媛",
+          "甲醛事件维权学生代表"
+        ]
+      },
+      {
+        "name": "Professor",
+        "description": "高校专任教师或研究员，具备学术权威性与公共发言能力的教育者",
+        "attributes": [
+          {
+            "name": "academic_title",
+            "type": "text",
+            "description": "职称，如教授、副教授、博导"
+          },
+          {
+            "name": "research_field",
+            "type": "text",
+            "description": "主要研究领域"
+          },
+          {
+            "name": "affiliation_department",
+            "type": "text",
+            "description": "所属院系"
+          }
+        ],
+        "examples": [
+          "严欢教授",
+          "杨景媛导师",
+          "同济医院泌尿外科专家"
+        ]
+      },
+      {
+        "name": "University",
+        "description": "具有独立法人资格、可发布官方通报并承担声誉责任的高等教育机构",
+        "attributes": [
+          {
+            "name": "official_name",
+            "type": "text",
+            "description": "全称，如武汉大学、香港浸会大学"
+          },
+          {
+            "name": "ranking_tier",
+            "type": "text",
+            "description": "如985、双一流、QS排名区间"
+          },
+          {
+            "name": "campus_type",
+            "type": "text",
+            "description": "如综合性大学、研究型大学、文理学院"
+          }
+        ],
+        "examples": [
+          "武汉大学",
+          "香港浸会大学",
+          "华中科技大学"
+        ]
+      },
+      {
+        "name": "MediaOutlet",
+        "description": "具有内容生产与传播能力的新闻媒体或自媒体平台，影响舆论走向",
+        "attributes": [
+          {
+            "name": "platform_type",
+            "type": "text",
+            "description": "如微博、抖音、知乎、B站、小红书、央媒"
+          },
+          {
+            "name": "editorial_stance",
+            "type": "text",
+            "description": "立场倾向，如中立、深度调查、情绪驱动"
+          },
+          {
+            "name": "audience_demographic",
+            "type": "text",
+            "description": "核心用户画像，如Z世代、家长群体、教育从业者"
+          }
+        ],
+        "examples": [
+          "网易号'笔杆论道'",
+          "上游新闻",
+          "小红书高考避坑博主"
+        ]
+      },
+      {
+        "name": "GovernmentAgency",
+        "description": "行使行政监管、司法裁决或教育管理职能的政府或司法机关",
+        "attributes": [
+          {
+            "name": "jurisdiction_level",
+            "type": "text",
+            "description": "如国家级、省级、区级"
+          },
+          {
+            "name": "functional_domain",
+            "type": "text",
+            "description": "如教育监管、司法审判、市场监管"
+          },
+          {
+            "name": "legal_authority",
+            "type": "text",
+            "description": "法定职权范围"
+          }
+        ],
+        "examples": [
+          "武汉经开区人民法院",
+          "湖北省教育厅",
+          "武汉大学保卫部"
+        ]
+      },
+      {
+        "name": "Alumni",
+        "description": "已毕业的武汉大学或其他高校校友，具有母校认同与跨地域动员能力",
+        "attributes": [
+          {
+            "name": "graduation_year",
+            "type": "text",
+            "description": "毕业年份"
+          },
+          {
+            "name": "current_profession",
+            "type": "text",
+            "description": "职业身份，如律师、教师、企业家"
+          },
+          {
+            "name": "geographic_residence",
+            "type": "text",
+            "description": "常住地，如武汉、北上广深、海外"
+          }
+        ],
+        "examples": [
+          "雷军",
+          "校友律师团成员",
+          "海外联署发起人"
+        ]
+      },
+      {
+        "name": "Parent",
+        "description": "在校学生或考生的直系监护人，关注教育公平与子女权益的决策参与者",
+        "attributes": [
+          {
+            "name": "child_enrollment_status",
+            "type": "text",
+            "description": "孩子是否在校/备考/已毕业"
+          },
+          {
+            "name": "residence_province",
+            "type": "text",
+            "description": "户籍或常住省份"
+          },
+          {
+            "name": "primary_concern",
+            "type": "text",
+            "description": "核心关切点，如升学、健康、安全、声誉"
+          }
+        ],
+        "examples": [
+          "湖北本地家长",
+          "外省高考生家长",
+          "甲醛事件家长后援会成员"
+        ]
+      },
+      {
+        "name": "NGO",
+        "description": "非政府组织或民间协作团体，在舆情中提供专业支持或组织协同行动",
+        "attributes": [
+          {
+            "name": "mission_focus",
+            "type": "text",
+            "description": "使命领域，如教育公平、心理健康、环境健康"
+          },
+          {
+            "name": "operational_scope",
+            "type": "text",
+            "description": "运作范围，如校内、省内、全国、跨国"
+          },
+          {
+            "name": "collaboration_mode",
+            "type": "text",
+            "description": "协作方式，如法律援助、检测支持、文档共建"
+          }
+        ],
+        "examples": [
+          "校友律师团",
+          "第三方检测机构",
+          "甲醛互助文档协作者"
+        ]
+      },
+      {
+        "name": "Person",
+        "description": "未被归类至上述具体类型的自然人，可在社交媒体发声互动的个体兜底类型",
+        "attributes": [
+          {
+            "name": "full_name",
+            "type": "text",
+            "description": "真实姓名或公开化名"
+          },
+          {
+            "name": "role_description",
+            "type": "text",
+            "description": "非正式角色描述，如‘匿名爆料网友’、‘樱花季游客’"
+          },
+          {
+            "name": "platform_identity",
+            "type": "text",
+            "description": "社交平台ID或身份标签"
+          }
+        ],
+        "examples": [
+          "微博网友@珞珈山守夜人",
+          "抖音评论区家长",
+          "知乎匿名提问者"
+        ]
+      },
+      {
+        "name": "Organization",
+        "description": "未被归类至上述具体类型的组织实体，具备账号运营与公共表达能力的机构兜底类型",
+        "attributes": [
+          {
+            "name": "org_name",
+            "type": "text",
+            "description": "组织全称或常用简称"
+          },
+          {
+            "name": "registration_status",
+            "type": "text",
+            "description": "注册性质，如民办非企业、社会团体、临时联盟"
+          },
+          {
+            "name": "primary_platform",
+            "type": "text",
+            "description": "主要活跃平台"
+          }
+        ],
+        "examples": [
+          "#保卫珞珈#超话运营组",
+          "武大宿舍改造模板创作者联盟",
+          "跨境教育观察小组"
+        ]
+      }
+    ],
+    "edge_types": [
+      {
+        "name": "WORKS_FOR",
+        "description": "个体在某组织任职或受雇关系",
+        "source_targets": [
+          {
+            "source": "Professor",
+            "target": "University"
+          },
+          {
+            "source": "Person",
+            "target": "Organization"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "STUDIES_AT",
+        "description": "学生就读于某高校",
+        "source_targets": [
+          {
+            "source": "Student",
+            "target": "University"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "AFFILIATED_WITH",
+        "description": "校友、家长或外部组织与高校存在制度性关联",
+        "source_targets": [
+          {
+            "source": "Alumni",
+            "target": "University"
+          },
+          {
+            "source": "Parent",
+            "target": "University"
+          },
+          {
+            "source": "NGO",
+            "target": "University"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "REPORTS_ON",
+        "description": "媒体机构对高校事件进行报道或评论",
+        "source_targets": [
+          {
+            "source": "MediaOutlet",
+            "target": "University"
+          },
+          {
+            "source": "MediaOutlet",
+            "target": "Student"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "RESPONDS_TO",
+        "description": "组织或个人就特定事件或言论作出公开回应",
+        "source_targets": [
+          {
+            "source": "University",
+            "target": "Student"
+          },
+          {
+            "source": "GovernmentAgency",
+            "target": "University"
+          },
+          {
+            "source": "Person",
+            "target": "University"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "COLLABORATES_WITH",
+        "description": "多方主体为共同目标开展联合行动",
+        "source_targets": [
+          {
+            "source": "Student",
+            "target": "Alumni"
+          },
+          {
+            "source": "Alumni",
+            "target": "NGO"
+          },
+          {
+            "source": "Parent",
+            "target": "NGO"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "SUPPORTS",
+        "description": "表达支持立场，可能伴随资源投入或声援行为",
+        "source_targets": [
+          {
+            "source": "Alumni",
+            "target": "Student"
+          },
+          {
+            "source": "Parent",
+            "target": "Student"
+          },
+          {
+            "source": "NGO",
+            "target": "Student"
+          }
+        ],
+        "attributes": []
+      },
+      {
+        "name": "OPPOSES",
+        "description": "表达反对立场，常见于舆论场中的观点对立",
+        "source_targets": [
+          {
+            "source": "Student",
+            "target": "University"
+          },
+          {
+            "source": "MediaOutlet",
+            "target": "University"
+          },
+          {
+            "source": "Person",
+            "target": "University"
+          }
+        ],
+        "attributes": []
+      }
+    ]
+  },
+  "analysis_summary": "文本聚焦武汉大学系列舆情事件，核心涉及学生个体（肖某某、杨景媛）、高校治理主体（武汉大学、香港浸会大学）、媒体平台（微博、知乎、小红书等）、司法与监管部门（法院、教育厅）、校友与家长群体、以及民间协作组织（律师团、检测机构）。实体设计紧扣‘可发声、可互动、可影响舆论’原则，覆盖事件中所有关键行动者；前8类为具体角色，后2类（Person/ Organization）作为兜底，确保模拟系统能容纳未明确定义但实际参与的长尾主体。",
+  "graph_id": "mirofish_3f092bd76d114b49",
+  "graph_build_task_id": "c0fad8ab-53b5-4d15-b003-386869fe3643",
+  "simulation_requirement": "如果武汉大学发布了对肖某某处分的撤销公告，大众舆情走向会怎么样\r\n",
+  "chunk_size": 500,
+  "chunk_overlap": 50,
+  "error": null
+}
