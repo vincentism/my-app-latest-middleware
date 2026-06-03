@@ -1,4 +1,5 @@
 {
+  "installCommand": "sh test-pyenv.sh && npm install",
   "outputDirectory": ".edgeone",
   "redirects": [
       {
